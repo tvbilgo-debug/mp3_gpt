@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from gtts import gTTS
 import io
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
 # Load Whisper model (base is good balance of speed/accuracy)
 model = whisper.load_model("base")
@@ -82,12 +82,11 @@ if uploaded_file is not None:
                     st.write(f"Target language: {selected_language} (code: {languages[selected_language]})")
                     
                     # Step 1: Translate the text to the target language
-                    translator = Translator()
                     lang_code = languages[selected_language]
                     
-                    # Translate the text
-                    translated_result = translator.translate(text_output, dest=lang_code)
-                    translated_text = translated_result.text
+                    # Translate the text using deep-translator
+                    translator = GoogleTranslator(source='auto', target=lang_code)
+                    translated_text = translator.translate(text_output)
                     
                     st.write(f"Translated text: '{translated_text[:100]}...'")
                     
