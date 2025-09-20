@@ -1,0 +1,7 @@
+streamlit
+moviepy
+openai-whisper
+pathlib
+gtts
+pygame
+googletrans==4.0.0rc1
